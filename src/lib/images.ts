@@ -21,7 +21,7 @@ function register(key: string, value: string) {
 }
 
 Object.entries(staticImages).forEach(([rawKey, value]) => {
-  const cleaned = rawKey.replace(/^\.\.\//, '').replace(/^images\//, '');
+  const cleaned = rawKey.replace(/^\.\.\/+/g, '').replace(/^images\//, '');
   register(cleaned, value);
   register(`images/${cleaned}`, value);
 });

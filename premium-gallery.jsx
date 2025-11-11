@@ -24,10 +24,24 @@ function toLh3(u, size = "s2000") {
   const url = String(u).trim();
 
   if (url.includes("lh3.googleusercontent.com")) {
-    if (/=(?:s|w|h)\d+$/i.test(url)) {
-      return url.replace(/=(?:s|w|h)\d+$/i, `=${size}`);
+    const sizePattern = /=(?:s|w|h)\d+(?:-[a-z0-9-]+)*$/i;
+
+    const [withoutHash, hash = ""] = url.split("#");
+    const [base, query = ""] = withoutHash.split("?");
+
+    if (sizePattern.test(base)) {
+      const updatedBase = base.replace(sizePattern, `=${size}`);
+      const querySuffix = query ? `?${query}` : "";
+      const hashSuffix = hash ? `#${hash}` : "";
+      return `${updatedBase}${querySuffix}${hashSuffix}`;
     }
-    return `${url}=${size}`;
+
+    if (!query) {
+      const hashSuffix = hash ? `#${hash}` : "";
+      return `${base}=${size}${hashSuffix}`;
+    }
+
+    return url;
   }
 
   const id = extractDriveId(url);

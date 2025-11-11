@@ -9,14 +9,39 @@
 <body>
   <header class="page-header">
     <div class="header-inner">
-      <p class="eyebrow">Private lookbook</p>
-      <h1>Modest Bridal — Premium Gallery</h1>
-      <p class="lede">This offline collection is ready for trunk shows, studio appointments, and client lookbooks.</p>
+      <div class="header-copy">
+        <p class="eyebrow">Private lookbook</p>
+        <h1>Modest Bridal — Premium Gallery</h1>
+        <p class="lede">This offline collection is ready for trunk shows, studio appointments, and client lookbooks.</p>
+      </div>
+      <div class="header-actions">
+        <button id="cartToggle" class="cart-button" type="button" aria-haspopup="dialog" aria-controls="cartDrawer" hidden>
+          <span class="cart-button__label">Cart</span>
+          <span id="cartBadge" class="cart-button__badge" hidden>0</span>
+        </button>
+      </div>
     </div>
   </header>
 
   <main class="page-main">
     <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+
+    <div id="toolbar" class="toolbar" hidden>
+      <div class="toolbar-primary">
+        <div id="searchContainer" class="toolbar-search" hidden>
+          <label class="visually-hidden" for="searchInput">Search styles</label>
+          <input id="searchInput" type="search" name="search" placeholder="Search by code, style, silhouette, or tags" autocomplete="off" />
+        </div>
+        <div id="toolbarButtons" class="toolbar-buttons" hidden>
+          <button id="exportCsv" type="button" class="button button-secondary" hidden>Export CSV</button>
+          <button id="printGallery" type="button" class="button button-secondary" hidden>Print / PDF</button>
+        </div>
+      </div>
+      <div id="categoryContainer" class="toolbar-categories" hidden>
+        <div id="categoryChips" class="chip-list"></div>
+        <button id="clearCategories" type="button" class="chip-clear" disabled>Clear</button>
+      </div>
+    </div>
 
     <div class="gallery-summary" hidden>
       <div>

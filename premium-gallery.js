@@ -135,33 +135,19 @@
     }
 
     showStatus('Loading gallery…');
-
-    try {
-      const manifest = await loadManifest('manifest.json');
-      if (!Array.isArray(manifest) || manifest.length === 0) {
-        showStatus('The manifest does not contain any gallery items.', 'error');
-        return;
-      }
-
-      renderGallery(manifest);
+    try{
+      const manifest=await loadManifest('manifest.json');
+      if(!Array.isArray(manifest)||!manifest.length){showStatus('The manifest does not contain any gallery items.','error');return;}
+      state.items=manifest.map(normalizeItem);
+      state.categories=collectCategories(state.items);
+      renderCategoryChips();
+      state.filtered=state.items.slice();
+      renderGallery(state.filtered);
+      updateExportAvailability();
       hideStatus();
-      console.log('Manifest loaded:', {
-        count: manifest.length,
-        first: manifest[0],
-      });
-      console.log('FIRST SRC =>', manifest[0] && manifest[0].src);
-    } catch (error) {
-      console.error('Failed to load manifest:', error);
-      showStatus(
-        `Unable to load manifest.json. ${error.message || error}`,
-        'error'
-      );
-    }
-  }
+      syncCartWithManifest();
+    }catch(error){console.error('Failed to load manifest:',error);showStatus(`Unable to load manifest.json. ${error.message||error}`,'error');}
+  };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();

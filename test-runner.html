@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Gallery Diagnostics Runner</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>(function(){const url=new URL(window.location.href);if(!url.searchParams.has('debug')){url.searchParams.set('debug','1');window.location.replace(url.toString());}})();</script>
+</head>
+<body class="bg-neutral-50">
+  <header class="page-header">
+    <div class="header-inner">
+      <div class="header-copy"><p class="eyebrow">Diagnostics</p><h1>Premium Gallery Harness</h1><p class="lede">Loads the offline gallery with test instrumentation enabled.</p></div>
+      <button class="cart-button" data-hook="cart-button">Cart <span class="cart-button__badge" data-hook="cart-count">0</span></button>
+    </div>
+  </header>
+  <main class="page-main">
+    <div id="status" class="status" hidden></div>
+    <section class="toolbar" data-hook="toolbar">
+      <div class="toolbar-primary">
+        <div class="toolbar-search"><input data-hook="search-input" placeholder="Search styles" /></div>
+        <div class="toolbar-buttons"><button class="button" data-hook="export-csv">Export CSV</button><button class="button-secondary" data-hook="export-pdf">Print PDF</button><a class="cart-mailto" data-hook="share-mailto" href="#">Mail shortlist</a></div>
+      </div>
+      <div class="toolbar-categories"><span>Categories</span><div class="chip-list" data-hook="category-list"></div><button class="chip-clear" data-hook="clear-categories">Clear</button></div>
+    </section>
+    <div class="gallery-summary" hidden>
+      <div><h2>Results</h2><p>Showing available looks.</p></div>
+      <span class="gallery-count" id="count">0 styles</span>
+    </div>
+    <div id="gallery" class="gallery-grid"></div>
+  </main>
+  <aside class="cart-drawer">
+    <div class="cart-drawer__body"><ul data-hook="cart-list"></ul></div>
+    <div class="cart-drawer__footer"><div class="cart-subtotal">Subtotal <strong data-hook="cart-total">—</strong></div><button class="cart-clear" data-hook="cart-clear">Clear cart</button></div>
+  </aside>
+  <script src="feature-flags.js"></script>
+  <script src="lib/assert.js"></script>
+  <script src="premium-gallery.js"></script>
+  <script src="diagnostics.js"></script>
+</body>
+</html>

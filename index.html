@@ -7,7 +7,8 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body class="bg-neutral-50 text-neutral-900">
-    <div id="root"></div>
+    <!-- Diagnostics scripts self-register when ?debug=1; keep markup free of direct includes here. -->
+    <div id="root" data-hook="app-root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

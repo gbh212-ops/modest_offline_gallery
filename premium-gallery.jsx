@@ -19,8 +19,19 @@ function extractDriveId(u = "") {
 }
 
 function toLh3(u, size = "s2000") {
-  const id = extractDriveId(u);
-  return id ? `https://lh3.googleusercontent.com/d/${id}=${size}` : u;
+  if (!u) return u;
+
+  const url = String(u).trim();
+
+  if (url.includes("lh3.googleusercontent.com")) {
+    if (/=(?:s|w|h)\d+$/i.test(url)) {
+      return url.replace(/=(?:s|w|h)\d+$/i, `=${size}`);
+    }
+    return `${url}=${size}`;
+  }
+
+  const id = extractDriveId(url);
+  return id ? `https://lh3.googleusercontent.com/d/${id}=${size}` : url;
 }
 
 /* ---------------- small utilities ---------------- */

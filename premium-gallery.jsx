@@ -24,21 +24,33 @@ function toLh3(u, size = "s2000") {
   const url = String(u).trim();
 
   if (url.includes("lh3.googleusercontent.com")) {
-    const sizePattern = /=(?:s|w|h)\d+(?:-[a-z0-9-]+)*$/i;
+    const sizePattern = /=(?:s|w|h)\d+(?:-[a-z0-9-]+)*(?=$|[?#])/i;
 
-    const [withoutHash, hash = ""] = url.split("#");
-    const [base, query = ""] = withoutHash.split("?");
+    try {
+      const parsed = new URL(url);
+      let changed = false;
 
-    if (sizePattern.test(base)) {
-      const updatedBase = base.replace(sizePattern, `=${size}`);
-      const querySuffix = query ? `?${query}` : "";
-      const hashSuffix = hash ? `#${hash}` : "";
-      return `${updatedBase}${querySuffix}${hashSuffix}`;
+      if (sizePattern.test(parsed.pathname)) {
+        parsed.pathname = parsed.pathname.replace(sizePattern, `=${size}`);
+        changed = true;
+      }
+
+      parsed.searchParams.forEach((value, key) => {
+        if (/^(?:s|w|h)\d+(?:-[a-z0-9-]+)*$/i.test(value)) {
+          parsed.searchParams.set(key, size);
+          changed = true;
+        }
+      });
+
+      if (changed) {
+        return parsed.toString();
+      }
+    } catch (err) {
+      // Fall through to manual handling if URL parsing fails.
     }
 
-    if (!query) {
-      const hashSuffix = hash ? `#${hash}` : "";
-      return `${base}=${size}${hashSuffix}`;
+    if (sizePattern.test(url)) {
+      return url.replace(sizePattern, `=${size}`);
     }
 
     return url;

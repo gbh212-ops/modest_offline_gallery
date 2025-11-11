@@ -1,27 +1,12 @@
+/**
+ * @deprecated Legacy gallery bootstrap kept for reference. The Vite React app in src/ supersedes this file.
+ */
 (function () {
   const statusEl = document.getElementById('status');
   const galleryEl = document.getElementById('gallery');
   const summaryEl = document.querySelector('.gallery-summary');
   const countEl = document.getElementById('count');
   const yearEl = document.getElementById('year');
-
-  const defaultFeatures = {
-    FEATURE_CART: true,
-    FEATURE_EXPORTS: true,
-    FEATURE_SEARCH: true,
-    FEATURE_CATEGORIES: true,
-  };
-
-  const featureFlags = (function resolveFeatureFlags() {
-    if (typeof window === 'undefined') {
-      return defaultFeatures;
-    }
-    const merged = Object.assign({}, defaultFeatures, window.__GALLERY_FEATURES__ || {});
-    window.__GALLERY_FEATURES__ = merged;
-    return merged;
-  })();
-
-  const hasFeature = (key) => Boolean(featureFlags[key]);
 
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();

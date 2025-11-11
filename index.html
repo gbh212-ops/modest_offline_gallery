@@ -1,38 +1,13 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Private Lookbook — Modest Bridal</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="page-header">
-    <div class="header-inner">
-      <p class="eyebrow">Private lookbook</p>
-      <h1>Modest Bridal — Premium Gallery</h1>
-      <p class="lede">This offline collection is ready for trunk shows, studio appointments, and client lookbooks.</p>
-    </div>
-  </header>
-
-  <main class="page-main">
-    <div id="status" class="status" role="status" aria-live="polite" hidden></div>
-
-    <div class="gallery-summary" hidden>
-      <div>
-        <h2>Collection overview</h2>
-        <p>High-resolution imagery stored locally for dependable offline access.</p>
-      </div>
-      <span id="count" class="gallery-count"></span>
-    </div>
-
-    <section id="gallery" class="gallery-grid" aria-live="polite"></section>
-  </main>
-
-  <footer class="page-footer">
-    <span>© <span id="year"></span> Modest Bridal. Confidential — do not distribute.</span>
-  </footer>
-
-  <script src="premium-gallery.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Modest Bridal — Premium Gallery</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="bg-neutral-50 text-neutral-900">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

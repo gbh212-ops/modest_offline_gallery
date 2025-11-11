@@ -1,3 +1,6 @@
+/**
+ * @deprecated Legacy gallery bootstrap kept for reference. The Vite React app in src/ supersedes this file.
+ */
 (function () {
   const statusEl = document.getElementById('status');
   const galleryEl = document.getElementById('gallery');

@@ -61,6 +61,13 @@ button,input,select,textarea{font:inherit;}
 .cart-close{font-size:1.5rem;line-height:1;background:rgba(148,163,184,.2);color:#0f172a;}
 .cart-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.35);opacity:0;transition:opacity .3s ease;pointer-events:none;z-index:1000;}
 .cart-backdrop.is-open{opacity:1;pointer-events:auto;}
+.diagnostics-overlay{position:fixed;top:1rem;right:1rem;z-index:1100;min-width:200px;padding:.85rem 1rem;border-radius:.9rem;border:1px solid rgba(148,163,184,.4);background:rgba(15,23,42,.85);color:#f8fafc;font-size:.85rem;box-shadow:0 12px 24px rgba(15,23,42,.25);display:grid;gap:.35rem;}
+.diagnostics-overlay__header{font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;color:rgba(226,232,240,.8);}
+.diagnostics-overlay__body{display:flex;align-items:center;justify-content:space-between;gap:.75rem;}
+.diagnostics-overlay button{border:none;border-radius:.6rem;padding:.45rem .75rem;font-weight:600;cursor:pointer;background:rgba(226,232,240,.9);color:#0f172a;}
+.diagnostics-overlay[data-status="fail"]{border-color:rgba(248,113,113,.6);box-shadow:0 0 0 1px rgba(248,113,113,.4),0 12px 24px rgba(248,113,113,.2);}
+.diagnostics-overlay[data-status="fail"] button{background:rgba(248,113,113,.9);color:#fff;}
+.diagnostics-overlay[data-status="pass"]{border-color:rgba(74,222,128,.5);}
 .cart-item{display:flex;justify-content:space-between;gap:.75rem;border:1px solid rgba(226,232,240,.9);border-radius:1rem;padding:.85rem 1rem;background:rgba(248,250,252,.6);}
 .cart-item__info{flex:1;display:grid;gap:.2rem;}
 .cart-item__title{font-weight:600;}
@@ -71,4 +78,4 @@ button,input,select,textarea{font:inherit;}
 .cart-empty{margin:0;color:rgba(71,85,105,.7);text-align:center;}
 @media(max-width:800px){.header-inner{flex-direction:column;align-items:stretch;}.header-actions{justify-content:flex-start;}}
 @media(max-width:640px){.page-header{padding:2.5rem 1.25rem 2rem;}.page-main{padding:2rem 1.25rem 3rem;}.toolbar{padding:1rem;}.gallery-grid{gap:1.25rem;}.gallery-card img{height:220px;}}
-@media print{body{background:#fff;}.page-header,.page-footer,.toolbar,.cart-button,.cart-drawer,.cart-backdrop,.status{display:none!important;}body.print-mode .gallery-grid{gap:1rem;}body.print-mode .gallery-card{box-shadow:none;border:1px solid #e2e8f0;}body.print-mode .gallery-card img{height:200px;object-fit:contain;}}
+@media print{body{background:#fff;}.page-header,.page-footer,.toolbar,.cart-button,.cart-drawer,.cart-backdrop,.status,.diagnostics-overlay{display:none!important;}body.print-mode .gallery-grid{gap:1rem;}body.print-mode .gallery-card{box-shadow:none;border:1px solid #e2e8f0;}body.print-mode .gallery-card img{height:200px;object-fit:contain;}}

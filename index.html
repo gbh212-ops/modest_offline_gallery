@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="referrer" content="no-referrer" />
+ <title>Private Lookbook — Modest Bridal</title>
+
+  <!-- Tailwind for styling. If you want a fully offline CSS later, I can give you a style.css drop-in. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Your optional extra CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-white">
+  <div id="root"></div>
+
+  <!-- React + ReactDOM + Babel (no build step required) -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Your premium gallery JSX (EXTERNAL file; note ?v to bust cache) -->
+  <script type="text/babel" src="premium-gallery.jsx?v=dev"></script>
+
+  <!-- Mount (INLINE code; NO src attribute belongs inside this block) -->
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<ModestPremiumGallery />);
+  </script>
+</body>
+</html>
+

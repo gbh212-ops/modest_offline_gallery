@@ -1,81 +1,13 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Private Lookbook — Modest Bridal</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="page-header">
-    <div class="header-inner">
-      <div class="header-copy">
-        <p class="eyebrow">Private lookbook</p>
-        <h1>Modest Bridal — Premium Gallery</h1>
-        <p class="lede">This offline collection is ready for trunk shows, studio appointments, and client lookbooks.</p>
-      </div>
-      <div class="header-actions">
-        <button id="cartToggle" class="cart-button" type="button" aria-haspopup="dialog" aria-controls="cartDrawer" hidden>
-          <span class="cart-button__label">Cart</span>
-          <span id="cartBadge" class="cart-button__badge" hidden>0</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <main class="page-main">
-    <div id="status" class="status" role="status" aria-live="polite" hidden></div>
-
-    <div id="toolbar" class="toolbar" hidden>
-      <div class="toolbar-primary">
-        <div id="searchContainer" class="toolbar-search" hidden>
-          <label class="visually-hidden" for="searchInput">Search styles</label>
-          <input id="searchInput" type="search" name="search" placeholder="Search by code, style, silhouette, or tags" autocomplete="off" />
-        </div>
-        <div id="toolbarButtons" class="toolbar-buttons" hidden>
-          <button id="exportCsv" type="button" class="button button-secondary" hidden>Export CSV</button>
-          <button id="printGallery" type="button" class="button button-secondary" hidden>Print / PDF</button>
-        </div>
-      </div>
-      <div id="categoryContainer" class="toolbar-categories" hidden>
-        <div id="categoryChips" class="chip-list"></div>
-        <button id="clearCategories" type="button" class="chip-clear" disabled>Clear</button>
-      </div>
-    </div>
-
-    <div class="gallery-summary" hidden>
-      <div>
-        <h2>Collection overview</h2>
-        <p>High-resolution imagery stored locally for dependable offline access.</p>
-      </div>
-      <span id="count" class="gallery-count"></span>
-    </div>
-
-    <section id="gallery" class="gallery-grid" aria-live="polite"></section>
-  </main>
-
-  <footer class="page-footer">
-    <span>© <span id="year"></span> Modest Bridal. Confidential — do not distribute.</span>
-  </footer>
-
-  <aside id="cartDrawer" class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" hidden>
-    <div class="cart-drawer__header">
-      <h2 id="cartTitle">Selected styles</h2>
-      <button id="closeCart" class="cart-close" type="button" aria-label="Close cart">×</button>
-    </div>
-    <div id="cartItems" class="cart-drawer__body"></div>
-    <div class="cart-drawer__footer">
-      <div class="cart-subtotal">
-        <span>Subtotal</span>
-        <strong id="cartSubtotal">$0.00</strong>
-      </div>
-      <a id="cartMailto" class="cart-mailto" href="#" target="_blank" rel="noopener">Share via email</a>
-      <button id="cartClear" class="cart-clear" type="button">Clear cart</button>
-    </div>
-  </aside>
-  <div id="cartBackdrop" class="cart-backdrop" hidden></div>
-
-  <script src="lib/exporters.js"></script>
-  <script src="premium-gallery.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Modest Bridal — Premium Gallery</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="bg-neutral-50 text-neutral-900">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
